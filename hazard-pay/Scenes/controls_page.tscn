@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://bytxwkb5siiw"]
+
+[ext_resource type="FontFile" uid="uid://bmjc7usmibmnj" path="res://Assets/Fonts/i_pixel_u/I-pixel-u.ttf" id="1_3fqhx"]
+[ext_resource type="Script" uid="uid://b7a5bie2mbu21" path="res://Scenes/controls_page.gd" id="1_jnbbu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jnbbu"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="controls_page" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jnbbu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.356863, 0.431373, 0.882353, 1)
+
+[node name="controls_back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.852
+anchor_top = 0.853
+anchor_right = 0.852
+anchor_bottom = 0.853
+offset_left = -119.504
+offset_top = -60.744
+offset_right = 119.496
+offset_bottom = 61.256
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_3fqhx")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jnbbu")
+text = "Back"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.072
+anchor_top = 0.095
+anchor_right = 0.693
+anchor_bottom = 0.9
+offset_left = -10.944
+offset_top = -9.56001
+offset_right = 12.664
+offset_bottom = 10.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3fqhx")
+theme_override_font_sizes/font_size = 50
+text = "Left Click - Open/Close Hand"
+
+[connection signal="pressed" from="controls_back" to="." method="_on_controls_back_pressed"]
