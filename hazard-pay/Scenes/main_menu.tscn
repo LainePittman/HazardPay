@@ -223,7 +223,7 @@ position = Vector2(578.504, 184.361)
 scale = Vector2(11.5399, 11.5399)
 sprite_frames = SubResource("SpriteFrames_6m47u")
 autoplay = "default"
-frame_progress = 0.824863
+frame_progress = 0.0756395
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="controls" to="." method="_on_controls_pressed"]

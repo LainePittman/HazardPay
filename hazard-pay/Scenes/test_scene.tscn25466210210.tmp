@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://cr4yekcn3uv5u"]
+
+[ext_resource type="Script" uid="uid://d0gns6lttpplq" path="res://Scripts/test_scene.gd" id="1_3dogw"]
+[ext_resource type="PackedScene" uid="uid://bdg8ieyyjqsx3" path="res://Scenes/knife.tscn" id="2_r5l72"]
+[ext_resource type="Texture2D" uid="uid://dvblds80dnm3" path="res://Assets/Sink.png" id="3_50ct6"]
+[ext_resource type="Texture2D" uid="uid://dc6jv37wc5b6m" path="res://Assets/Dishwasher.png" id="4_hb2xm"]
+[ext_resource type="Texture2D" uid="uid://bp0wvqjncml0m" path="res://Assets/basket.png" id="5_ak5v8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5v8"]
+size = Vector2(423, 186)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x033f"]
+size = Vector2(83.5, 20)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ak5v8"]
+b = Vector2(649, -3.00003)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_x033f"]
+b = Vector2(3, 650)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rdbpf"]
+b = Vector2(311, -4)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oho3u"]
+b = Vector2(12, -138)
+
+[node name="test_scene" type="Node2D"]
+script = ExtResource("1_3dogw")
+
+[node name="Knife" parent="." instance=ExtResource("2_r5l72")]
+position = Vector2(168, 149)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(230, 805)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(712.5, -249)
+shape = SubResource("RectangleShape2D_ak5v8")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
+offset_left = 501.0
+offset_top = -342.0
+offset_right = 923.0
+offset_bottom = -157.0
+
+[node name="sink" type="Sprite2D" parent="."]
+position = Vector2(510, 428)
+scale = Vector2(4.405, 4.405)
+texture = ExtResource("3_50ct6")
+
+[node name="dishwasher" type="Sprite2D" parent="."]
+position = Vector2(899, 289)
+scale = Vector2(7.48, 7.48)
+texture = ExtResource("4_hb2xm")
+
+[node name="basket" type="Sprite2D" parent="."]
+position = Vector2(123, 451)
+scale = Vector2(6.56, 6.56)
+texture = ExtResource("5_ak5v8")
+
+[node name="LeftSink" type="StaticBody2D" parent="."]
+position = Vector2(343, 461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftSink"]
+position = Vector2(-9.75, 15)
+shape = SubResource("RectangleShape2D_x033f")
+
+[node name="RightSink" type="StaticBody2D" parent="."]
+position = Vector2(694, 462)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightSink"]
+position = Vector2(-9.75, 15)
+shape = SubResource("RectangleShape2D_x033f")
+
+[node name="LeftBorder" type="StaticBody2D" parent="."]
+position = Vector2(169, 92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBorder"]
+position = Vector2(-171, -91)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_ak5v8")
+
+[node name="RightBorder" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBorder"]
+position = Vector2(1151, -1)
+shape = SubResource("SegmentShape2D_x033f")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-29, 607)
+shape = SubResource("SegmentShape2D_rdbpf")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(279, 604)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("SegmentShape2D_oho3u")

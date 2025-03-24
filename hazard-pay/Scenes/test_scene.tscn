@@ -1,0 +1,173 @@
+[gd_scene load_steps=17 format=3 uid="uid://cr4yekcn3uv5u"]
+
+[ext_resource type="Script" uid="uid://d0gns6lttpplq" path="res://Scripts/test_scene.gd" id="1_3dogw"]
+[ext_resource type="PackedScene" uid="uid://bdg8ieyyjqsx3" path="res://Scenes/knife.tscn" id="2_r5l72"]
+[ext_resource type="Texture2D" uid="uid://dvblds80dnm3" path="res://Assets/Sink.png" id="3_50ct6"]
+[ext_resource type="Texture2D" uid="uid://dc6jv37wc5b6m" path="res://Assets/Dishwasher.png" id="4_hb2xm"]
+[ext_resource type="Texture2D" uid="uid://bp0wvqjncml0m" path="res://Assets/basket.png" id="5_ak5v8"]
+[ext_resource type="Script" uid="uid://c40lylc5qn4bp" path="res://Scripts/game_manager.gd" id="6_x033f"]
+[ext_resource type="FontFile" uid="uid://bmjc7usmibmnj" path="res://Assets/Fonts/i_pixel_u/I-pixel-u.ttf" id="7_rdbpf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5v8"]
+size = Vector2(423, 209)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x033f"]
+size = Vector2(83.5, 20)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ak5v8"]
+b = Vector2(649, -3.00003)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_x033f"]
+b = Vector2(3, 650)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rdbpf"]
+b = Vector2(311, -4)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oho3u"]
+b = Vector2(12, -138)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_d3awe"]
+b = Vector2(1152, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdbpf"]
+size = Vector2(256.5, 162.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oho3u"]
+size = Vector2(216, 80)
+
+[node name="test_scene" type="Node2D"]
+script = ExtResource("1_3dogw")
+
+[node name="Knife" parent="." instance=ExtResource("2_r5l72")]
+position = Vector2(187, 316)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(230, 805)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(712.5, -260.5)
+shape = SubResource("RectangleShape2D_ak5v8")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
+offset_left = 501.0
+offset_top = -342.0
+offset_right = 923.0
+offset_bottom = -157.0
+
+[node name="sink" type="Sprite2D" parent="."]
+position = Vector2(510, 428)
+scale = Vector2(4.405, 4.405)
+texture = ExtResource("3_50ct6")
+
+[node name="dishwasher" type="Sprite2D" parent="."]
+position = Vector2(899, 289)
+scale = Vector2(7.48, 7.48)
+texture = ExtResource("4_hb2xm")
+
+[node name="basket" type="Sprite2D" parent="."]
+position = Vector2(123, 451)
+scale = Vector2(6.56, 6.56)
+texture = ExtResource("5_ak5v8")
+
+[node name="LeftSink" type="StaticBody2D" parent="."]
+position = Vector2(343, 461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftSink"]
+position = Vector2(-9.75, 15)
+shape = SubResource("RectangleShape2D_x033f")
+
+[node name="RightSink" type="StaticBody2D" parent="."]
+position = Vector2(694, 462)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightSink"]
+position = Vector2(-9.75, 15)
+shape = SubResource("RectangleShape2D_x033f")
+
+[node name="LeftBorder" type="StaticBody2D" parent="."]
+position = Vector2(169, 92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBorder"]
+position = Vector2(-171, -91)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_ak5v8")
+
+[node name="RightBorder" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBorder"]
+position = Vector2(1151, -1)
+shape = SubResource("SegmentShape2D_x033f")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-29, 607)
+shape = SubResource("SegmentShape2D_rdbpf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(346, 652)
+shape = SubResource("SegmentShape2D_rdbpf")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(279, 604)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("SegmentShape2D_oho3u")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("SegmentShape2D_d3awe")
+
+[node name="SinkWater" type="Area2D" parent="."]
+position = Vector2(513, 142)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SinkWater"]
+position = Vector2(-1.25, 427.25)
+shape = SubResource("RectangleShape2D_rdbpf")
+
+[node name="DishReciever" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DishReciever"]
+position = Vector2(858, 398)
+shape = SubResource("RectangleShape2D_oho3u")
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_x033f")
+
+[node name="ScoreLabel" type="Label" parent="GameManager"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 751.0
+offset_top = 29.0
+offset_right = -260.0
+offset_bottom = -579.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_rdbpf")
+theme_override_font_sizes/font_size = 30
+
+[node name="TimeLabel" type="Label" parent="GameManager"]
+offset_left = 257.0
+offset_top = 32.0
+offset_right = 458.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("7_rdbpf")
+theme_override_font_sizes/font_size = 30
+
+[node name="Timer" type="Timer" parent="GameManager"]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(130, 112)
+
+[connection signal="area_entered" from="SinkWater" to="Knife" method="_on_sink_water_area_entered"]
+[connection signal="area_entered" from="DishReciever" to="Knife" method="_on_dish_reciever_area_entered"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

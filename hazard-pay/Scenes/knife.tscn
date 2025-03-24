@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdg8ieyyjqsx3"]
+
+[ext_resource type="Texture2D" uid="uid://beqn0nq0l2aof" path="res://Assets/Knife/dirty_knife.png" id="1_pgkuq"]
+[ext_resource type="Script" uid="uid://bhas0wn2rtbo3" path="res://Scripts/Knife/knife.gd" id="1_ts28m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4pir"]
+size = Vector2(20, 71)
+
+[node name="Knife" type="RigidBody2D" groups=["pickable"]]
+top_level = true
+input_pickable = true
+freeze_mode = 1
+script = ExtResource("1_ts28m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pgkuq")
+
+[node name="safe" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="safe"]
+position = Vector2(-12, 68.5)
+shape = SubResource("RectangleShape2D_k4pir")
+
+[node name="danger" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="danger"]
+polygon = PackedVector2Array(22, 28, 18, -55, -19, -118, -23, -118, -23, 28)
+
+[node name="BoundingShape" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-19, 118, -3, 118, 0, 110, 0, 27, 23, 28, 18, -56, -19, -116, -22, -117, -23, 110)
+
+[node name="CleanProgress" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="CleanProgress" to="." method="_on_clean_progress_timeout"]
